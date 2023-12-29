@@ -10,18 +10,24 @@ class SearchZipcode extends Component
     public $zipcodeData;
     public $zipcode = '';
     public $street = '';
-    public $neig = '';
+    public $neighborhood = '';
+    public $city = '';
+    public $state = '';
+
+    // public function updatedZipcode(string $value) 
+    //pode ser colocado acim depois de updated, necessario adicionar o lazy no input
+    // {
+    //     dd($value);
+    // }
 
     public function updatedZipcode(string $value)
     {
-        dd($value);
-    }
+        $response = Http::get("https://viacep.com.br/ws/{$value}/json/")->json();
 
-
-    public function mount(): void
-    {
-        $response = Http::get('https://viacep.com.br/ws/05311020/json')->json();
-        // dd($response['logradouro']);
+        $this->street = $response['logradouro'] ?? '';
+        $this->neighborhood = $response['bairro'] ?? '';
+        $this->city = $response['localidade'] ?? '';
+        $this->state = $response['uf'] ?? '';
     }
 
     public function render()

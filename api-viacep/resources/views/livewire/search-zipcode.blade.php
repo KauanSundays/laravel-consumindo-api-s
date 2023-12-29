@@ -13,7 +13,7 @@
 
         <div class="mb-4">
             <label for="street" class="block text-gray-700">Rua</label>
-            <input type="text" id="street" wire:model="street" placeholder="Digite a rua" class="w-full p-2 border rounded"/>
+            <input type="text" id="street" wire:model.lazy="street" placeholder="Digite a rua" class="w-full p-2 border rounded"/>
         </div>
 
         <div class="mb-4">
