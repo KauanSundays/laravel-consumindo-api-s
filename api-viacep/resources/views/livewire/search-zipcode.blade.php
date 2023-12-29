@@ -4,7 +4,10 @@
     <form wire:submit.prevent="submitForm">
         <div class="mb-4">
             <label for="cep" class="block text-gray-700">CEP</label>
-            <input type="text" id="cep" wire:model="zipcode" placeholder="Digite o CEP" class="w-full p-2 border rounded"/>
+            <input type="text" id="cep" wire:model.lazy="zipcode" placeholder="Digite o CEP" class="w-full p-2 border rounded"/>
+            {{-- Ao colocar wiremode.lazy ele configura que os campos serão alterados apos eu preencher o campo de cep
+                e sair desse campo
+             --}}
             @error('zipcode') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 

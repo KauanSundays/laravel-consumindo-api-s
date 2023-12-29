@@ -8,6 +8,15 @@ use Livewire\Component;
 class SearchZipcode extends Component
 {
     public $zipcodeData;
+    public $zipcode = '';
+    public $street = '';
+    public $neig = '';
+
+    public function updatedZipcode(string $value)
+    {
+        dd($value);
+    }
+
 
     public function mount(): void
     {
