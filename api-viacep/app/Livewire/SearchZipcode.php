@@ -12,7 +12,7 @@ class SearchZipcode extends Component
     public function mount(): void
     {
         $response = Http::get('https://viacep.com.br/ws/05311020/json')->json();
-        dd($response);
+        // dd($response['logradouro']);
     }
 
     public function render()
