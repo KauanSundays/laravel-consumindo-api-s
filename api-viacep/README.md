@@ -1,66 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+ # Search Zipcode
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a Livewire component that fetches Brazilian address information from a given zip code using the `viacep.com.br` API.
 
-## About Laravel
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+To install this component, add the following to your `composer.json` file:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```json
+{
+    "require": {
+        "livewire/livewire": "^2.x"
+    }
+}
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Then, run `composer update`.
 
-## Learning Laravel
+## Usage
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+To use this component, add the following to your Blade template:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```html
+<livewire:search-zipcode />
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+This will render a form with a text input for the zip code and four text inputs for the street, neighborhood, city, and state.
 
-## Laravel Sponsors
+When the user enters a zip code and presses enter, the component will make a request to the `viacep.com.br` API and populate the four text inputs with the corresponding address information.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Code Explanation
 
-### Premium Partners
+The component consists of the following properties:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+* `zipcodeData`: This property stores the response from the `viacep.com.br` API.
+* `zipcode`: This property stores the zip code entered by the user.
+* `street`: This property stores the street address corresponding to the zip code.
+* `neighborhood`: This property stores the neighborhood corresponding to the zip code.
+* `city`: This property stores the city corresponding to the zip code.
+* `state`: This property stores the state corresponding to the zip code.
 
-## Contributing
+The component also has the following methods:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* `updatedZipcode(string $value)`: This method is called whenever the `zipcode` property is updated. It makes a request to the `viacep.com.br` API and populates the four text inputs with the corresponding address information.
 
-## Code of Conduct
+The component also has the following view:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```html
+<div>
+    <label for="zipcode">CEP:</label>
+    <input type="text" id="zipcode" wire:model="zipcode">
 
-## Security Vulnerabilities
+    <label for="street">Logradouro:</label>
+    <input type="text" id="street" wire:model="street">
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    <label for="neighborhood">Bairro:</label>
+    <input type="text" id="neighborhood" wire:model="neighborhood">
 
-## License
+    <label for="city">Cidade:</label>
+    <input type="text" id="city" wire:model="
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Generated by [BlackboxAI](https://www.blackbox.ai)
