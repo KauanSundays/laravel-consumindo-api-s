@@ -4,7 +4,7 @@
     <form wire:submit.prevent="submitForm">
         <div class="mb-4">
             <label for="cep" class="block text-gray-700">Id do Pokemon</label>
-            <input type="text" id="cep" wire:model.lazy="idPokemon" 
+            <input type="text" id="idPokemon" wire:model.lazy="idPokemon" 
                 placeholder="Digite o ID do Pokémon" 
                 class="w-full p-2 border rounded"
             />

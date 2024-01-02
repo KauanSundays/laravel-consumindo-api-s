@@ -2,31 +2,18 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class SearchPokemon extends Component
 {
-    // public $zipcodeData;
-    // public $zipcode = '';
-    // public $street = '';
-    // public $neighborhood = '';
-    // public $city = '';
-    // public $state = '';
+    public $idPokemon = '';
 
-    // public function updatedZipcode(string $value) 
-    //pode ser colocado acim depois de updated, necessario adicionar o lazy no input
-    // {
-    //     dd($value);
-    // }
-
-    public function updatedZipcode(string $value)
+    public function updatedIdPokemon(string $value)
     {
-        $response = Http::get("https://viacep.com.br/ws/{$value}/json/")->json();
+        $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$value}")->json();
 
-        $this->street = $response['logradouro'] ?? '';
-        $this->neighborhood = $response['bairro'] ?? '';
-        $this->city = $response['localidade'] ?? '';
-        $this->state = $response['uf'] ?? '';
+        dd($response);
     }
 
     public function render()
