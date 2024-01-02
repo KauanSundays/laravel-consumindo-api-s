@@ -8,12 +8,24 @@ use Livewire\Component;
 class SearchPokemon extends Component
 {
     public $idPokemon = '';
+    public $pokemonData;
 
     public function updatedIdPokemon(string $value)
     {
-        $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$value}")->json();
+        // Limpa os dados do Pokémon ao alterar o ID
+        $this->pokemonData = null;
 
-        dd($response);
+        // Se o ID não estiver vazio, faz a chamada à API
+        if (!empty($value)) {
+            $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$value}")->json();
+
+            // Atribui os dados do Pokémon à propriedade para uso posterior
+            $this->pokemonData = [
+                'name' => $response['name'],
+                'type' => $response['types'][0]['type']['name'], // Apenas pegando o primeiro tipo, você pode ajustar conforme necessário
+                'sprite' => $response['sprites']['front_default'],
+            ];
+        }
     }
 
     public function render()
