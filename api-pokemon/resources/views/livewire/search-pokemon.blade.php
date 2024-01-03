@@ -12,7 +12,7 @@
         </div>
 
         <div class="mb-4">
-            <button wire:click="searchPokemon" class="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded">
+            <button wire:click="searchPokemon('{{ $idPokemon }}')" class="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded">
                 Buscar Pokémon
             </button>
         </div>
